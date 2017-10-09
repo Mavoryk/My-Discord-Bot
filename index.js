@@ -1,6 +1,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const commands = require('./commands')
+const fs = require("fs");
+
+const config = JSON.parse(fs.readFileSync("./config.json", "UTF8"));
 
 client.on('ready', () => {
     console.log("I'm online!");
@@ -13,6 +15,5 @@ client.on('message', message => {
     console.log(chance);
 //    console.log(message.content.toLowerCase());
 });
-console.log("test")
-client.login("")
-console.log("test2")
+
+client.login(config.token)
